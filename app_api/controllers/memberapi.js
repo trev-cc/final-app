@@ -13,8 +13,10 @@ var sendJSONresponse = function(res, status, content)
 /* GET Members */
 module.exports.getMemberData = function(req, res)
 {
-    member.find({}, null, function (err, member){
-        if(!member){
+    member
+   .find({})
+   .exec(function (err, member){
+        if(err){
             sendJSONresponse(res, 404, {
                 "message": "members were not found"
             });
